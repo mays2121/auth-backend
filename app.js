@@ -12,7 +12,7 @@ const auth = require("./auth");
 // execute database connection
 dbConnect();
 
-// Curb Cores Error by adding a header here
+// Curb CORS Error by adding a header here
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (request, response, next) => {
-  response.json({ message: "Hello World! The server is connected" });
+  response.json({ message: "Hello World! The server is connected." });
   next();
 });
 
@@ -48,8 +48,7 @@ app.post("/register", (request, response) => {
       });
 
       // save the new user
-      user
-        .save()
+      user.save()
         // return success if the new user is added to the database successfully
         .then((result) => {
           response.status(201).send({
